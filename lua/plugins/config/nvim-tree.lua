@@ -13,7 +13,9 @@ local function open_nvim_tree(data)
 
 
   -- change to the directory
-  -- vim.cmd.cd(data.file)
+  if directory then
+    vim.cmd.cd(data.file)
+  end
 
   -- open the tree
   api.tree.open()
