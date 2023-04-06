@@ -2,16 +2,18 @@ local tree = require('nvim-tree')
 local api = require('nvim-tree.api')
 
 local function open_nvim_tree(data)
-
   -- buffer is a directory
   local directory = vim.fn.isdirectory(data.file) == 1
+  local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
 
-  if not directory then
+  if not directory and not no_name then
     return
   end
 
+
+
   -- change to the directory
-  vim.cmd.cd(data.file)
+  -- vim.cmd.cd(data.file)
 
   -- open the tree
   api.tree.open()
@@ -44,6 +46,7 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 -- vim.api.nvim_create_autocmd({ "BufDelete" }, { pattern =  "*", callback = maybe_close_nvim_tree })
 tree.setup {
     hijack_cursor = true,
+    hijack_unnamed_buffer_when_opening = true,
 
     diagnostics = {
       enable = true,

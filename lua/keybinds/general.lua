@@ -36,6 +36,7 @@ xmap('<', '<gv')
 -- misc plugin config (less than 5 lines each)
 -- Nvim-tree
 nmap('<Leader>tt', ':NvimTreeToggle<CR>')
+nmap('<Leader>gt', ':NvimTreeFocus<CR>')
 
 -- nvim window picker
 keyset('n', 'gs', function()
