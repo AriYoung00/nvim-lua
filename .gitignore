@@ -1,0 +1,4 @@
+autoload/
+plug.vim.bak
+plugin/
+
