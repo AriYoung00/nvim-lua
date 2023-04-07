@@ -73,7 +73,7 @@ All keybinds are for normal mode unless otherwise specified.
 | Keybind         | Action                                                    |
 |-----------------|-----------------------------------------------------------|
 | `<C-o>`         | Go back                                                   |
-| `jj`            | <Esc>                                                     |
+| `jj`            | `<Esc>`                                                   |
 | `f<char>`       | Find <char> forward in current line                       |
 | `F<char>`       | Find <char> backward in current line                      |
 | `s<char><char>` | Find sequence <char><char> forward in current line        |
