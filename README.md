@@ -26,6 +26,14 @@ have TrueColor support).
 After the first launch, all of the plugins should be installed. For posterity,
 also run `:PackerSync` and `:PackerCompile` after first launch.
 
+### Langage Server Installation
+To install support for LSP-based suggestions for your language of choice, find
+it in the list present [at this
+link](https://github.com/neoclide/coc.nvim/wiki/Language-servers) and follow the
+directions there. Usually, this just involves running a `:CocInstall` command --
+e.g., to install support for `rust-analyzer`, you would run `:CocInstall
+coc-rust-analyzer`.
+
 ### Updates
 Periodically, run `git pull` then `:PackerSync` and `:PackerCompile` in order
 to update plugins and any changes to configuration I might have pushed to this repo.
