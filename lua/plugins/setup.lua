@@ -133,6 +133,16 @@ return require('packer').startup(function(use)
         config = function() require('auto-save').setup() end
     }
 
+    use {
+        "akinsho/toggleterm.nvim", tag = '*', 
+        config = function() 
+            require("toggleterm").setup {
+                open_mapping = nil,
+                direction = 'float'
+            }
+        end
+    }
+
     if packer_bootstrap then
         require('packer').sync()
     end
