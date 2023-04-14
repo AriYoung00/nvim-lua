@@ -85,17 +85,17 @@ return require('packer').startup(function(use)
         config = function() require("plugins/config/bufferline") end
     }
 
-    use(
-        { "jackMort/ChatGPT.nvim",
-        config = function()
-          require("chatgpt").setup()
-        end,
-        requires = {
-          "MunifTanjim/nui.nvim",
-          "nvim-lua/plenary.nvim",
-          "nvim-telescope/telescope.nvim"
-        }
-    })
+    -- use(
+    --     { "jackMort/ChatGPT.nvim",
+    --     config = function()
+    --       require("chatgpt").setup()
+    --     end,
+    --     requires = {
+    --       "MunifTanjim/nui.nvim",
+    --       "nvim-lua/plenary.nvim",
+    --       "nvim-telescope/telescope.nvim"
+    --     }
+    -- })
 
     -- use {
     --     'windwp/nvim-autopairs',
