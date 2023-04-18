@@ -1,5 +1,6 @@
 autoload/
 plug.vim.bak
 plugin/
-lua/plugins/config/env.lua
+lua/env.lua
 
+lua/plugins/config/env.lua
