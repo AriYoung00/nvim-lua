@@ -4,7 +4,9 @@
     "diagnostic.warningSign": "𥉉", // ""
     "diagnostic.infoSign": "",
     "diagnostic.hintSign": "﨟",
-    "rust-analyzer.server.extraEnv": { "RUSTUP_TOOLCHAIN": "stable" },
+    "rust-analyzer.server.extraEnv": { "RUSTUP_TOOLCHAIN": "nightly" },
+    "rust-analyzer.updates.channel": "nightly",
+
 
     "languageserver": {
       "haskell": {
