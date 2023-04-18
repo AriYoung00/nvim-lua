@@ -28,6 +28,7 @@ return require('packer').startup(function(use)
     use 'justinmk/vim-sneak'
     use 'jackguo380/vim-lsp-cxx-highlight'
     use 'kyazdani42/nvim-web-devicons'
+    use "HiPhish/nvim-ts-rainbow2"
 
     use {
       'nvim-telescope/telescope.nvim', branch = '0.1.x',
@@ -124,6 +125,18 @@ return require('packer').startup(function(use)
                     end
                 },
                 additional_vim_regex_highlighting = false
+            }
+
+            require('nvim-treesitter.configs').setup {
+                rainbow = {
+                    enable = true,
+                    -- list of languages you want to disable the plugin for
+                    -- disable = { 'jsx', 'cpp' },
+                    -- Which query to use for finding delimiters
+                    query = 'rainbow-parens',
+                    -- Highlight the entire buffer all at once
+                    strategy = require('ts-rainbow').strategy.global,
+                }
             }
         end
     }
