@@ -14,10 +14,6 @@ map('', '<up>', '<nop>', opts)
 map('', '<down>', '<nop>', opts)
 map('', '<left>', '<nop>', opts)
 map('', '<right>', '<nop>', opts)
-imap('<up>', '<nop>')
-imap('<down>', '<nop>')
-imap('<left>', '<nop>')
-imap('<right>', '<nop>')
 
 -- random
 tmap('<Esc>', '<C-\\><C-n>')
