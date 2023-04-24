@@ -3,9 +3,9 @@
             code_style = {
                 comments = 'italic',
                 keywords = 'bold',
-                functions = 'none',
+                functions = 'italic',
                 strings = 'none',
-                variables = 'italic'
+                -- variables = 'italic'
             },
         }
         require('onedark').load()
