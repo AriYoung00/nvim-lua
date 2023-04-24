@@ -104,6 +104,7 @@ All keybinds are for normal mode unless otherwise specified.
 | `<Leader>tt` | Toggle nvim-tree                           |
 | `<Leader>gt` | Focus nvim-tree                            |
 | `gb`         | Select tab                                 |
+| `bd`         | Select tab to close                        |
 | `<C-w>h`     | Move left one split                        |
 | `<C-w>j`     | Move down one split                        |
 | `<C-w>k`     | Move up one split                          |

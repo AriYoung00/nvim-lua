@@ -66,6 +66,7 @@ end, { desc = "Pick a window" })
 
 -- bufferline
 nmap('gb', ":BufferLinePick<CR>")
+nmap('bd', ':BufferLinePickClose<CR>')
 
 
 -- telescope
