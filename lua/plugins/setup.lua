@@ -22,7 +22,6 @@ return require('packer').startup(function(use)
 
     use 'lervag/vimtex'
     use 'dag/vim-fish'
-    -- use 'sirver/ultisnips'
     use 'sheerun/vim-polyglot'
     use 'dkarter/bullets.vim'
     use 'justinmk/vim-sneak'
@@ -60,20 +59,46 @@ return require('packer').startup(function(use)
     }
 
     use {
-        'neoclide/coc.nvim', branch = 'release',
-        config = function()
-            -- some plugins have issues with backup
-            vim.opt.backup = false
-            vim.opt.writebackup = false
+        'williamboman/mason.nvim',
+    }
 
-            -- Having longer updatetime (default is 4000 ms = 4s) leads 
-            -- to noticeable delays and poor user experience
-            vim.opt.updatetime = 300
-
-            -- Always show the signcolumn, otherwise it would shift the 
-            -- text each time diagnostics appeared/became resolved
-            vim.opt.signcolumn = "yes"
+    use {
+        'williamboman/mason-lspconfig.nvim',
+        config = function() 
+            require('mason').setup()
+            require('mason-lspconfig').setup()
+            require('mason-lspconfig').setup_handlers {
+                function(server_name)
+                    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+                    require("lspconfig")[server_name].setup {
+                        capabilities = capabilities
+                    }
+                end
+            }
         end
+    }
+
+    use {
+        'neovim/nvim-lspconfig',
+        config = function() require("plugins/config/lsp") end
+    }
+
+    -- completion
+    use {
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        tag = "v1.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!:).
+        run = "make install_jsregexp"
+    }
+
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-cmdline'
+    use {
+        'hrsh7th/nvim-cmp',
+        config = function() require('plugins/config/cmp') end
     }
 
     use {
@@ -85,18 +110,6 @@ return require('packer').startup(function(use)
         'akinsho/bufferline.nvim',
         config = function() require("plugins/config/bufferline") end
     }
-
-    -- use(
-    --     { "jackMort/ChatGPT.nvim",
-    --     config = function()
-    --       require("chatgpt").setup()
-    --     end,
-    --     requires = {
-    --       "MunifTanjim/nui.nvim",
-    --       "nvim-lua/plenary.nvim",
-    --       "nvim-telescope/telescope.nvim"
-    --     }
-    -- })
 
     -- use {
     --     'windwp/nvim-autopairs',
