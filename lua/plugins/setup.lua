@@ -28,6 +28,7 @@ return require('packer').startup(function(use)
     use 'jackguo380/vim-lsp-cxx-highlight'
     use 'kyazdani42/nvim-web-devicons'
     use "HiPhish/nvim-ts-rainbow2"
+    use "folke/neodev.nvim"
 
     use {
       'nvim-telescope/telescope.nvim', branch = '0.1.x',
@@ -64,7 +65,8 @@ return require('packer').startup(function(use)
 
     use {
         'williamboman/mason-lspconfig.nvim',
-        config = function() 
+        config = function()
+            require('neodev').setup{ lspconfig = false }
             require('mason').setup()
             require('mason-lspconfig').setup()
             require('mason-lspconfig').setup_handlers {
@@ -73,6 +75,10 @@ return require('packer').startup(function(use)
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
                     }
+                end,
+                ["lua_ls"] = function()
+                    local caps = require('cmp_nvim_lsp').default_capabilities()
+                    require("lspconfig").lua_ls.setup{ before_init = require("neodev.lsp").before_init }
                 end
             }
         end
@@ -111,14 +117,14 @@ return require('packer').startup(function(use)
         config = function() require("plugins/config/bufferline") end
     }
 
-    -- use {
-    --     'windwp/nvim-autopairs',
-    --     config = function() 
-    --         require('nvim-autopairs').setup {
-    --             bind_cr = false
-    --         }
-    --     end
-    -- }
+    use {
+        'windwp/nvim-autopairs',
+        config = function() 
+            require('nvim-autopairs').setup {
+                bind_cr = false
+            }
+        end
+    }
 
     use {
         'nvim-treesitter/nvim-treesitter',
