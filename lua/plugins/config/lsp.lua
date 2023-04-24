@@ -1,22 +1,18 @@
-vim.fn.sign_define(
-  "LspDiagnosticsSignError",
-  { texthl = "LspDiagnosticsSignError", text = "", numhl = "LspDiagnosticsSignError" }
-)
-vim.fn.sign_define(
-  "LspDiagnosticsSignWarning",
-  { texthl = "LspDiagnosticsSignWarning", text = "", numhl = "LspDiagnosticsSignWarning" }
-)
+os.execute("touch /Users/ari/we_are_here.txt")
 
-vim.fn.sign_define(
-  "LspDiagnosticsSignHint",
-  { texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint" }
-)
-vim.fn.sign_define(
-  "LspDiagnosticsSignInformation",
-  { texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation" }
-)
 
-vim.diagnostic.config { 
+local signs = {
+  { name = "DiagnosticSignError", text = "" },
+  { name = "DiagnosticSignWarn",  text = "" },
+  { name = "DiagnosticSignHint",  text = "" },
+  { name = "DiagnosticSignInfo",  text = "" },
+}
+
+for _, sign in ipairs(signs) do
+  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+end
+
+vim.diagnostic.config {
   float = { border = "rounded" },
   update_in_insert = true,
 }
