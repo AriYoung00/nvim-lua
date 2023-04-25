@@ -4,3 +4,4 @@ plugin/
 lua/env.lua
 
 lua/plugins/config/env.lua
+lua/.luarc.json
