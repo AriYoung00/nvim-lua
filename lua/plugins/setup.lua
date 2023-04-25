@@ -29,6 +29,7 @@ return require('packer').startup(function(use)
     use 'kyazdani42/nvim-web-devicons'
     use "HiPhish/nvim-ts-rainbow2"
     use "folke/neodev.nvim"
+    use "onsails/lspkind.nvim"
 
     use {
       'nvim-telescope/telescope.nvim', branch = '0.1.x',
@@ -37,7 +38,7 @@ return require('packer').startup(function(use)
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true },
-        config = function() require('lualine').setup() end
+        config = function() require('lualine').setup{ options = { theme = 'onedark'} } end
     }
 
     use {

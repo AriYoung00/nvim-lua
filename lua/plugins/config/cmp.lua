@@ -1,6 +1,10 @@
 -- Set up nvim-cmp.
+vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+
 local cmp = require('cmp')
 local luasnip = require('luasnip')
+local lspkind = require('lspkind')
+lspkind.init{ mode = 'symbol_text' }
 
 cmp.setup({
     snippet = {
@@ -13,6 +17,19 @@ cmp.setup({
          completion = cmp.config.window.bordered(),
          documentation = cmp.config.window.bordered(),
     },
+    experimental = { ghost_text = true },
+    -- completion = {
+    --   format = lspkind.cmp_format({
+    --     mode = "symbol_text",
+    --     menu = ({
+    --       buffer = "[Buffer]",
+    --       nvim_lsp = "[LSP]",
+    --       luasnip = "[LuaSnip]",
+    --       nvim_lua = "[Lua]",
+    --       latex_symbols = "[Latex]",
+    --     })
+    --   }),
+    -- },
 
     performance = { debounce = 50, throttle = 50 },
     mapping = cmp.mapping.preset.insert({
@@ -44,10 +61,10 @@ cmp.setup({
         end, { 'i', 's' }),
     }),
     sources = cmp.config.sources({
-        { name = 'nvim_lsp', keyword_length = 6 },
-        { name = 'luasnip' }, -- For luasnip users.
+        { name = 'nvim_lsp', keyword_length = 0 },
+        { name = 'luasnip', keyword_length = 0 }, -- For luasnip users.
     }, {
-        { name = 'buffer' },
+        { name = 'buffer', keyword_length = 6 },
     })
 })
 
