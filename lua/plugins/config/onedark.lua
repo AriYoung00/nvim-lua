@@ -7,11 +7,9 @@ local Theme = {
 local function getSysTheme()
     -- non-portable macos hack for now
     -- the following line makes it unix-generic as well
-    local whandle = io.popen("which defaults")
-    if whandle == nil then
+    if vim.fn.executable("defaults") == 0 then
         return Theme.Unknown
     end
-
 
     local handle = io.popen('defaults read -g AppleInterfaceStyle')
     local output = ""
