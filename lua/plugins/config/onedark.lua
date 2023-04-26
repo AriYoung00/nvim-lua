@@ -1,21 +1,41 @@
-local function getSysTheme()
-    local handle = io.popen('defaults read -g AppleInterfaceStyle')
+local Theme = {
+    Unknown = -1,
+    Dark  = 0,
+    Light = 1
+};
 
-    if handle == nil then
-        return ""
+local function getSysTheme()
+    -- non-portable macos hack for now
+    -- the following line makes it unix-generic as well
+    local whandle = io.popen("which defaults")
+    if whandle == nil then
+        return Theme.Unknown
+    end
+
+
+    local handle = io.popen('defaults read -g AppleInterfaceStyle')
+    local output = ""
+    if handle ~= nil then
+        output = handle:read("*a")
+    end
+
+    if handle == nil or not string.find(output, "Dark") then
+        return Theme.Light
     else
-        return handle:read('*a')
+        return Theme.Dark
     end
 end
 
 local function getStyle()
     local output = getSysTheme()
-    if string.find(output, 'Dark') then
+
+    if output == Theme.Dark or output == Theme.Unknown then
         return 'deep'
-    else
+    else -- theme must be light
         return 'light'
     end
 end
+
 
 local theme_style = getStyle()
 require('onedark').setup {
