@@ -147,11 +147,13 @@ return require('packer').startup(function(use)
         config = function() 
             local npairs = require('nvim-autopairs')
             local Rule = require('nvim-autopairs.rule')
-            npairs.setup()
+            npairs.setup { check_ts = true }
+            npairs.add_rules(require('nvim-autopairs.rules.endwise-lua'))
             npairs.add_rules({ Rule('<', '>', {'rs', 'rust'}) })
         end
     }
 
+    use "windwp/nvim-ts-autotag"
     use {
         'nvim-treesitter/nvim-treesitter',
         config = function()
@@ -169,7 +171,7 @@ return require('packer').startup(function(use)
                         end
                     end
                 },
-                additional_vim_regex_highlighting = false
+                additional_vim_regex_highlighting = false,
             }
 
             require('nvim-treesitter.configs').setup {
@@ -201,10 +203,14 @@ return require('packer').startup(function(use)
                     -- Using this option may slow down your editor, and you may see some duplicate highlights.
                     -- Instead of true it can also be a list of languages
                     additional_vim_regex_highlighting = false,
-                  },
+                },
+                autotag = {
+                    enable = true
+                },
             }
         end
     }
+
 
     use {
         'Pocco81/auto-save.nvim',
