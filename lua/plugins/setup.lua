@@ -30,6 +30,8 @@ return require('packer').startup(function(use)
     use "HiPhish/nvim-ts-rainbow2"
     use "folke/neodev.nvim"
     use "onsails/lspkind.nvim"
+    use 'stevearc/dressing.nvim'
+
 
     use {
       'nvim-telescope/telescope.nvim', branch = '0.1.x',
@@ -65,6 +67,20 @@ return require('packer').startup(function(use)
     }
 
     use {
+        'simrat39/rust-tools.nvim',
+        config = function ()
+            local rt = require('rust-tools')
+            rt.setup({
+              server = {
+                on_attach = function(_, _bufnr)
+                  -- Hover actions
+                  rt.inlay_hints.enable()
+                end,
+              },
+            })
+        end
+    }
+    use {
         'williamboman/mason-lspconfig.nvim',
         config = function()
             require('neodev').setup{ lspconfig = false }
@@ -80,6 +96,9 @@ return require('packer').startup(function(use)
                 ["lua_ls"] = function()
                     local caps = require('cmp_nvim_lsp').default_capabilities()
                     require("lspconfig").lua_ls.setup{ before_init = require("neodev.lsp").before_init }
+                end,
+                ["rust_analyzer"] = function()
+                    require("rust-tools").setup {}
                 end
             }
         end
@@ -88,6 +107,11 @@ return require('packer').startup(function(use)
     use {
         'neovim/nvim-lspconfig',
         config = function() require("plugins/config/lsp") end
+    }
+
+    use {
+        'simrat39/inlay-hints.nvim',
+        config = function () require('inlay-hints').setup() end
     }
 
     -- completion
@@ -121,9 +145,10 @@ return require('packer').startup(function(use)
     use {
         'windwp/nvim-autopairs',
         config = function() 
-            require('nvim-autopairs').setup {
-                bind_cr = false
-            }
+            local npairs = require('nvim-autopairs')
+            local Rule = require('nvim-autopairs.rule')
+            npairs.setup()
+            npairs.add_rules({ Rule('<', '>', {'rs', 'rust'}) })
         end
     }
 

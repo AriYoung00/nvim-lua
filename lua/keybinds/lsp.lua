@@ -15,26 +15,6 @@ keyset('n', '[d', vim.diagnostic.goto_prev)
 keyset('n', ']d', vim.diagnostic.goto_next)
 keyset('n', '<space>q', vim.diagnostic.setloclist)
 
--- Highlight the symbol and its references on a CursorHold event(cursor is idle)
-vim.api.nvim_create_autocmd("CursorHold", { callback = function(ev)
-    -- vim.lsp.buf.hover()
-    vim.lsp.buf.document_highlight()
-end })
-
-vim.api.nvim_create_autocmd("CursorHoldI", { callback = function(ev)
-    vim.lsp.buf.document_highlight()
-end
-})
-
-local stuff = vim.applying
-
-
-vim.api.nvim_create_autocmd("CursorMoved", { callback = function(ev)
-  vim.lsp.buf.clear_references()
-  vim.cmd "noh"
-end
-})
-
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
@@ -64,6 +44,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.lsp.buf.format { async = true }
     end, opts)
 
+    -- Run the Code Lens actions on the current line
+    keyset("n", "<leader>cl", vim.lsp.codelens.run, opts)
+    keyset("n", "<leader>qf", vim.lsp.buf.code_action, opts)
   end,
 })
 
@@ -91,15 +74,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- -- Remap keys for applying codeActions to the current buffer
 -- keyset("n", "<leader>ac", "<Plug>(coc-codeaction)", opts)
 -- -- Apply the most preferred quickfix action on the current line.
--- keyset("n", "<leader>qf", "<Plug>(coc-fix-current)", opts)
 -- 
 -- -- Remap keys for apply refactor code actions.
 -- keyset("n", "<leader>re", "<Plug>(coc-codeaction-refactor)", { silent = true })
 -- keyset("x", "<leader>r", "<Plug>(coc-codeaction-refactor-selected)", { silent = true })
 -- keyset("n", "<leader>r", "<Plug>(coc-codeaction-refactor-selected)", { silent = true })
 -- 
--- -- Run the Code Lens actions on the current line
--- keyset("n", "<leader>cl", "<Plug>(coc-codelens-action)", opts)
 -- 
 -- 
 -- -- Map function and class text objects
