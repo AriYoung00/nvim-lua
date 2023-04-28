@@ -213,6 +213,14 @@ return require('packer').startup(function(use)
 
 
     use {
+        'folke/trouble.nvim',
+        config = function()
+            require('trouble').setup{}
+        end
+    }
+
+
+    use {
         'Pocco81/auto-save.nvim',
         config = function() require('auto-save').setup() end
     }
