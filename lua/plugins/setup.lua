@@ -144,10 +144,10 @@ return require('packer').startup(function(use)
 
     use {
         'windwp/nvim-autopairs',
-        config = function() 
+        config = function()
             local npairs = require('nvim-autopairs')
-            local Rule = require('nvim-autopairs.rule')
-            npairs.add_rules(require('nvim-autopairs.rules.endwise-lua'))
+            -- local Rule = require('nvim-autopairs.rule')
+            -- npairs.add_rules(require('nvim-autopairs.rules.endwise-lua'))
             npairs.setup { check_ts = true }
         end
     }
