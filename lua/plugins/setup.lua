@@ -114,6 +114,16 @@ return require('packer').startup(function(use)
         config = function () require('inlay-hints').setup() end
     }
 
+    -- Lua
+    use {
+      "folke/which-key.nvim",
+      config = function()
+        vim.o.timeout = true
+        vim.o.timeoutlen = 300
+        require("which-key").setup {}
+      end
+    }
+
     -- completion
     use {
         "L3MON4D3/LuaSnip",
@@ -229,7 +239,8 @@ return require('packer').startup(function(use)
         config = function() 
             require("toggleterm").setup {
                 open_mapping = nil,
-                direction = 'float'
+                direction = 'float',
+                shell = 'fish',
             }
         end
     }
