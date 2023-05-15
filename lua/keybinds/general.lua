@@ -16,7 +16,6 @@ map('', '<left>', '<nop>', opts)
 map('', '<right>', '<nop>', opts)
 
 -- random
-tmap('<Esc>', '<C-\\><C-n>')
 imap('jj', '<Esc>')
 
 -- paste from system keyboard
@@ -38,24 +37,9 @@ xmap('<', '<gv')
 nmap('<Leader>tt', ':NvimTreeToggle<CR>')
 nmap('<Leader>gt', ':NvimTreeFocus<CR>')
 
--- toggle terminal
-function Set_terminal_mappings()
-  if vim.bo.filetype == "terminal" then
-    vim.api.nvim_buf_set_keymap(0, 't', '<Leader>gg', '<C-\\><C-n>:ToggleTerm<CR>', {noremap = true, silent = true})
-  end
-end
-
-vim.cmd("augroup TerminalMappings")
-vim.cmd("autocmd!")
-vim.cmd("autocmd BufEnter * lua Set_terminal_mappings()")
-vim.cmd("augroup END")
--- vim.api.nvim_create_autocmd("BufEnter", {
---     command = "lua Terminal_mappings()",
---     desc = "Highlight symbol under cursor on CursorHold"
--- })
-nmap('<Leader>gg', ':ToggleTerm<CR>')
-tmap('<Leader>gg', '<ESC>:ToggleTerm<CR>')
--- tmap('<Leader>gg', ':ToggleTerm<CR>')
+tmap('<Leader><Esc>', '<C-\\><C-n>')
+nmap('<c-/>', ':ToggleTerm<CR>')
+tmap('<c-/>', '<C-\\><C-n>:ToggleTerm<CR>')
 
 -- nvim window picker
 keyset('n', 'gs', function()
