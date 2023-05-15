@@ -20,9 +20,8 @@ opt.mouse = "a"
 opt.conceallevel = 2
 
 -- Folding config
--- opt.foldmethod  = 'expr'
--- opt.foldexpr    = 'nvim_treesitter#foldexpr()'
-opt.foldmethod  = 'syntax'
+opt.foldmethod  = 'expr'
+opt.foldexpr    = 'nvim_treesitter#foldexpr()'
 opt.foldnestmax = 2
 
 -- Set correct tab behavior
