@@ -119,7 +119,7 @@ return require('packer').startup(function(use)
       "folke/which-key.nvim",
       config = function()
         vim.o.timeout = true
-        vim.o.timeoutlen = 300
+        vim.o.timeoutlen = 800
         require("which-key").setup {}
       end
     }
@@ -243,6 +243,10 @@ return require('packer').startup(function(use)
                 shell = 'fish',
             }
         end
+    }
+
+    use {
+        'jbyuki/instant.nvim'
     }
 
     if packer_bootstrap then
