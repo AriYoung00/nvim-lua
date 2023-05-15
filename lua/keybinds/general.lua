@@ -38,7 +38,8 @@ nmap('<Leader>tt', ':NvimTreeToggle<CR>')
 nmap('<Leader>gt', ':NvimTreeFocus<CR>')
 
 tmap('<Leader><Esc>', '<C-\\><C-n>')
-nmap('<c-/>', ':ToggleTerm<CR>')
+nmap('<c-/>', ':ToggleTerm direction=float<CR>')
+nmap('<c-?>', ':ToggleTerm direction=horizontal<CR>')
 tmap('<c-/>', '<C-\\><C-n>:ToggleTerm<CR>')
 
 -- nvim window picker
