@@ -49,6 +49,7 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 tree.setup {
     hijack_cursor = true,
     hijack_unnamed_buffer_when_opening = true,
+    sync_root_with_cwd = true,
 
     diagnostics = {
       enable = true,
