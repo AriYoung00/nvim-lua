@@ -43,6 +43,12 @@ nmap('<c-/>', ':ToggleTerm direction=float<CR>')
 nmap('<c-?>', ':ToggleTerm direction=horizontal<CR>')
 tmap('<c-/>', '<C-\\><C-n>:ToggleTerm<CR>')
 
+-- move between windows using alt+dir
+nmap('<M-h>', '<C-w>h')
+nmap('<M-j>', '<C-w>j')
+nmap('<M-k>', '<C-w>k')
+nmap('<M-l>', '<C-w>l')
+
 -- nvim window picker
 keyset('n', 'gs', function()
     local picked_window_id = require('window-picker').pick_window() or vim.api.nvim_get_current_win()

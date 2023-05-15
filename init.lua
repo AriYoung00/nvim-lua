@@ -9,6 +9,8 @@ local function loadrequire(mod)
 end
 loadrequire("env")
 
+vim.opt.guifont = { "JetBrainsMono Nerd Font", ":h11" }
+
 require("general")
 require("plugins/setup")
 require("keybinds/general")
