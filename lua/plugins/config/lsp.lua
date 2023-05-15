@@ -17,7 +17,7 @@ vim.diagnostic.config {
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   virtual_text = {
     prefix = "",
-    spacing = 10,
+    spacing = 5,
   },
   signs = true,
   underline = true,
@@ -46,7 +46,6 @@ end
 
 vim.api.nvim_create_autocmd("CursorMoved", { callback = function(ev)
   vim.lsp.buf.clear_references()
-  vim.cmd "noh"
 end
 })
 
