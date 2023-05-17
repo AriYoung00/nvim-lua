@@ -64,3 +64,6 @@ vim.cmd([[
   let &t_SR = "\<esc>[3 q"
   let &t_EI = "\<esc>[ q"
 ]])
+
+-- strip trailing whitespace
+vim.cmd([[autocmd BufWritePre * :%s/\s\+$//e]]);
