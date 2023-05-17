@@ -3,8 +3,13 @@ local opt = vim.opt
 local g   = vim.g
 
 -- disable netrw for nvim-tree
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
+
+-- set neovide options
+g.neovide_input_macos_alt_is_meta = true
+vim.opt.guifont = { "JetBrainsMono Nerd Font", ":h15" }
+
 
 -- Set shell
 -- commented for now, is this necessary?
@@ -64,6 +69,3 @@ vim.cmd([[
   let &t_SR = "\<esc>[3 q"
   let &t_EI = "\<esc>[ q"
 ]])
-
--- strip trailing whitespace
-vim.cmd([[autocmd BufWritePre * :%s/\s\+$//e]]);
