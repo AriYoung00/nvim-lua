@@ -39,8 +39,8 @@ nmap('<Leader>gt', ':NvimTreeFocus<CR>')
 
 -- terminal stuff
 tmap('<Leader><Esc>', '<C-\\><C-n>')
-nmap('<c-/>', ':ToggleTerm direction=float<CR>')
-nmap('<c-?>', ':ToggleTerm direction=horizontal<CR>')
+nmap('<c-/>', ':ToggleTerm direction=horizontal<CR>')
+nmap('<c-?>', ':ToggleTerm direction=float<CR>')
 tmap('<c-/>', '<C-\\><C-n>:ToggleTerm<CR>')
 
 -- move between windows using alt+dir
