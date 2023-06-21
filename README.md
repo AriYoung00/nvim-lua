@@ -44,12 +44,8 @@ also run `:PackerSync` and `:PackerCompile` after first launch.
 
 ### Langage Server Installation
 
-To install support for LSP-based suggestions for your language of choice, find
-it in the list present [at this
-link](https://github.com/neoclide/coc.nvim/wiki/Language-servers) and follow the
-directions there. Usually, this just involves running a `:CocInstall` command --
-e.g., to install support for `rust-analyzer`, you would run `:CocInstall
-coc-rust-analyzer`.
+To install the language server for any given language as you're editing, run
+`:LspInstall`.
 
 
 ### Updates
