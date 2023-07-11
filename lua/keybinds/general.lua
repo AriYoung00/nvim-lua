@@ -63,7 +63,13 @@ nmap('bd', ':BufferLinePickClose<CR>')
 
 -- telescope
 local tscope = require('telescope.builtin')
+local function findWord()
+    tscope.grep_string{ search = vim.fn.expand("<cword>") }
+end
+
 keyset('n', '<leader>ff', tscope.find_files, {})
 keyset('n', '<leader>fg', tscope.live_grep, {})
 keyset('n', '<leader>fb', tscope.buffers, {})
 keyset('n', '<leader>fh', tscope.help_tags, {})
+keyset('n', '<leader>*', findWord, {})
+
