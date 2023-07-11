@@ -184,7 +184,7 @@ return require('packer').startup(function(use)
             }
 
             require('nvim-treesitter.configs').setup {
-                ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "rust"},
+                ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "rust", "cpp", "c"},
 
                 rainbow = {
                     enable = true,
